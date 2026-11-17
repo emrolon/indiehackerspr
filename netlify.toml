@@ -8,8 +8,10 @@
   publish = "public"
   command = """\
     git config --global core.quotepath false && \
-    hugo build --gc --minify --baseURL "${URL}"
+    hugo build --gc --minify
     """
+# Production always uses baseURL from hugo.toml (www.indiehackerspr.com) so
+# canonical URLs never point at the netlify.app subdomain.
 
 [context.deploy-preview]
   command = """\
