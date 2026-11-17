@@ -1,0 +1,25 @@
+{{- /* A post's author, from front matter: autor (name), autorBio and autorLink are optional. If the name matches a
+  member in data/miembros.yaml, their photo and bio fill in; otherwise an autor.* image in the post's folder. */ -}}
+{{ $p := . }}
+{{ $miembro := index (where hugo.Data.miembros "name" $p.Params.autor) 0 }}
+{{ $foto := $p.Resources.GetMatch "autor.*" }}
+{{ with $miembro }}{{ with resources.Get (printf "images/miembros/%s" .photo) }}{{ $foto = . }}{{ end }}{{ end }}
+{{ $bio := or $p.Params.autorBio (cond (ne $miembro nil) (index $miembro "bio") "") }}
+<aside class="flex flex-col gap-5 rounded-xl border-2 border-navy bg-celeste-light p-6 sm:flex-row">
+  {{ with $foto }}
+    {{ with .Fill "192x192 webp smart" }}
+      <img src="{{ .RelPermalink }}" width="96" height="96" alt="Foto de {{ $p.Params.autor }}" loading="lazy"
+        class="size-24 shrink-0 rounded-full border-4 border-white object-cover">
+    {{ end }}
+  {{ end }}
+  <div>
+    <p class="text-sm font-semibold text-adoquin">Escrito por</p>
+    <p class="text-xl font-bold">
+      {{ with $p.Params.autorLink }}<a href="{{ . }}" class="underline underline-offset-4 hover:text-flamboyan">{{ $p.Params.autor }}</a>{{ else }}{{ $p.Params.autor }}{{ end }}
+      {{ with $miembro }}<span class="ml-2 rounded-full bg-white px-2.5 py-0.5 align-middle text-xs font-bold">Miembro</span>{{ end }}
+    </p>
+    {{ with $bio }}
+      <div class="mt-2 leading-relaxed text-navy/75 [&_a]:font-semibold [&_a]:text-adoquin [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-flamboyan">{{ . | markdownify }}</div>
+    {{ end }}
+  </div>
+</aside>

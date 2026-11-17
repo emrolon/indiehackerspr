@@ -8,8 +8,11 @@
   "description" site.Params.description
   "areaServed" (dict "@type" "Place" "name" "Puerto Rico")
   "founder" (dict "@type" "Person" "name" site.Params.founder.name "url" site.Params.founder.url)
-  "sameAs" (slice site.Params.links.twitter site.Params.links.youtube site.Params.links.luma)
+  "sameAs" (slice site.Params.links.twitter site.Params.links.linkedin site.Params.links.youtube site.Params.links.luma)
 -}}
+{{- $members := slice -}}
+{{- range hugo.Data.miembros }}{{ $members = $members | append (dict "@type" "Person" "name" .name) }}{{ end -}}
+{{- $org = merge $org (dict "member" $members) -}}
 {{- $graph := slice $org -}}
 {{- if .IsHome -}}
   {{- $graph = $graph | append (dict
@@ -41,6 +44,25 @@
       "scheduleTimezone" "America/Puerto_Rico"
     )
   ) -}}
+{{- end -}}
+{{- if and .IsPage (eq .Section "blog") -}}
+  {{- $post := dict
+    "@type" "BlogPosting"
+    "headline" .Title
+    "description" .Description
+    "datePublished" (.Date.Format "2006-01-02")
+    "dateModified" (.Lastmod.Format "2006-01-02")
+    "inLanguage" site.Language.Locale
+    "url" .Permalink
+    "mainEntityOfPage" .Permalink
+    "publisher" (dict "@id" (printf "%s#organizacion" site.Home.Permalink))
+  -}}
+  {{- with .Params.autor -}}
+    {{- $author := dict "@type" "Person" "name" . -}}
+    {{- with $.Params.autorLink }}{{ $author = merge $author (dict "url" .) }}{{ end -}}
+    {{- $post = merge $post (dict "author" $author) -}}
+  {{- end -}}
+  {{- $graph = $graph | append $post -}}
 {{- end -}}
 {{- if eq .Path "/trabajo-remoto" -}}
   {{- $items := slice -}}

@@ -16,6 +16,7 @@ Anyone can open a PR, and most people do it through a coding agent: [AGENTS.md](
 and [/contribuye](https://www.indiehackerspr.com/contribuye/) has the prompts to paste.
 
 - **Members:** `data/miembros.yaml` (bio is Markdown) + photo in `assets/images/miembros/`
+- **Blog posts:** a folder per post in `content/blog/` (`index.md` + images); author and rules in `AGENTS.md`
 - **Remote-work places:** `data/lugares.yaml` + photo in `assets/images/lugares/`
 - **Links** (Slack, Luma, X, YouTube, add-a-place form): `[params.links]` in `hugo.toml`
 - **Weekly Mastermind** (time, platform, host): `[params.mastermind]` in `hugo.toml`
@@ -30,6 +31,7 @@ it to `OG` in that script and set `images:` in the page's front matter.
 
 - `layouts/home.html` — home page sections
 - `layouts/trabajo-remoto/section.html` — remote-work guide with type filters
+- `layouts/blog/` — blog list and post, with the author card (`_partials/autor.html`) and guest-post prompt box
 - `layouts/contribuye/section.html` — "contribute with your agent" page with copyable prompts
 - `layouts/_partials/` — header, footer, logo (SVG), member and place cards, CSS pipeline
 - `assets/css/main.css` — Tailwind entry and color tokens (Puerto Rico flag: celeste, flamboyán, navy, plus adoquín)

@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <p class="text-sm font-semibold text-adoquin">
+      <a href="{{ .CurrentSection.RelPermalink }}" class="underline underline-offset-4 hover:text-flamboyan">Blog</a>
+      · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+      {{ with .Params.autor }}· {{ . }}{{ end }}
+    </p>
+    <h1 class="display mt-4 text-4xl sm:text-5xl">{{ .Title }}</h1>
+    {{ with .Description }}<p class="mt-6 text-xl leading-relaxed text-navy/75">{{ . }}</p>{{ end }}
+    {{ with .Resources.GetMatch "{*cover*,*feature*}" }}
+      {{ with .Fit "1440x1440 webp" }}
+        <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="" class="mt-10 w-full rounded-xl border-2 border-navy">
+      {{ end }}
+    {{ end }}
+    <div class="prose prose-lg mt-10 prose-headings:font-extrabold prose-a:text-adoquin hover:prose-a:text-flamboyan">{{ .Content }}</div>
+    {{ with .Params.autor }}<div class="mt-14">{{ partial "autor.html" $ }}</div>{{ end }}
+    <div class="mt-10">{{ partial "escribe-post.html" }}</div>
+  </article>
+{{ end }}

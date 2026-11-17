@@ -1,7 +1,7 @@
 baseURL = 'https://www.indiehackerspr.com/'
 locale = 'es-PR'
 title = 'Indie Hackers Puerto Rico'
-disableKinds = ['taxonomy', 'term', 'rss']
+disableKinds = ['taxonomy', 'term']
 enableRobotsTXT = true
 copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
 
@@ -13,6 +13,7 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
   [params.links]
     slack = 'https://communityinviter.com/apps/indiehackerspr/indie-hackers-puerto-rico'
     twitter = 'https://twitter.com/indiehackerspr'
+    linkedin = 'https://www.linkedin.com/company/indie-hackers-puerto-rico/'
     youtube = 'https://www.youtube.com/channel/UCYqirt7QurXFiXkgMgz6QMA'
     luma = 'https://luma.com/indiehackers_pr'
     addPlace = 'https://indiehackerpr.paperform.co'
@@ -27,6 +28,18 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
     utcHour = 14
     platform = 'Google Meet'
     host = 'Emanuel Rolon'
+
+# Only the blog gets a feed (outputs in content/blog/_index.md).
+# llms.txt: a plain-text map of the site for AI assistants (layouts/home.llms.txt). Google ignores it; others may not.
+[outputFormats.llms]
+  mediaType = 'text/plain'
+  baseName = 'llms'
+  isPlainText = true
+  notAlternative = true
+[outputs]
+  home = ['html', 'llms']
+  section = ['html']
+  page = ['html']
 
 [build]
   [build.buildStats]
@@ -59,6 +72,10 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
     name = 'Dónde trabajar remoto'
     pageRef = '/trabajo-remoto'
     weight = 30
+  [[menus.main]]
+    name = 'Blog'
+    pageRef = '/blog'
+    weight = 35
   [[menus.main]]
     name = 'Contribuye'
     pageRef = '/contribuye'

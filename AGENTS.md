@@ -23,7 +23,8 @@ The person may not know Git, YAML or Hugo, and shouldn't have to. You do the wor
 1. **Add or update their own member profile:** an entry in `data/miembros.yaml` and a photo in `assets/images/miembros/`.
 2. **Add or update a place to work remotely:** an entry in `data/lugares.yaml` and a photo in `assets/images/lugares/`.
    The comments at the top of that file list the allowed values.
-3. **Fix something on the site:** a typo, a broken link, a place that closed, a bug in a template.
+3. **Write a guest post for the blog** (`/blog/`): anyone can, member or not. See "Guest posts" below.
+4. **Fix something on the site:** a typo, a broken link, a place that closed, a bug in a template.
 
 Anything bigger (a new section, a redesign, new dependencies), open an issue first instead of a PR.
 
@@ -44,6 +45,34 @@ Anything bigger (a new section, a redesign, new dependencies), open an issue fir
   photo is landscape, at least 640×400. `rating` is the person's honest score out of 10.
 - Append new entries at the end of the YAML file. Keep the existing formatting.
 - Don't touch `hugo.toml`, `netlify.toml`, `package.json` or the layouts unless the fix is about them.
+
+## Guest posts
+
+A post is a folder, `content/blog/<slug>/`, with an `index.md` and any images it uses next to it:
+
+```markdown
+---
+title: "Cómo conseguí mis primeros 10 clientes desde Mayagüez"
+date: 2026-11-20
+description: One or two sentences on what the reader gets from it. Shows in the list, search results and link previews.
+autor: María Rivera             # exactly as in data/miembros.yaml if they're a member: their photo and bio fill in
+autorBio: Fundadora de Ejemplo.  # optional; one line, Markdown. Needed if they're not a member
+autorLink: https://ejemplo.com  # optional; their site, LinkedIn or X
+---
+```
+
+- **Interview the author, then write in their voice.** Ask what happened, what they learned, the numbers, what they'd do
+  differently. Show the draft and change it until they say it sounds like them. Never invent facts, numbers, quotes or
+  results: if something is missing, ask.
+- **What fits:** first-hand stories of building something independent from or for Puerto Rico: first customers,
+  pricing, failures, tools, taxes and laws, working from the Island. Doesn't fit: generic advice lists, press releases,
+  thinly veiled ads, anything they didn't live. A link to their product is fine; a sales pitch isn't.
+- **Spanish**, 500 to 2,000 words, `##` headings, short paragraphs. Use concrete numbers and dates where they have them.
+- **Images:** optional, in the post folder, referenced by file name (`![Descripción](foto.jpg)`) with real alt text.
+  Name one `cover.jpg` (landscape, ideally 1200×630) to use it at the top of the post and in link previews. A photo of
+  the author that isn't a member's goes in the folder as `autor.jpg`.
+- `slug`: lowercase, dashes, no accents (`primeros-10-clientes`). `date` is the day they open the PR.
+- PR title: `Post: <title>`.
 
 ## Check your change
 

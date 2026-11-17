@@ -14,7 +14,9 @@
       <li><a href="{{ $links.slack }}" class="hover:text-celeste">Comunidad en Slack</a></li>
       <li><a href="{{ $links.luma }}" class="hover:text-celeste">Eventos en Luma</a></li>
       <li><a href="{{ $links.twitter }}" class="hover:text-celeste">X (Twitter)</a></li>
+      <li><a href="{{ $links.linkedin }}" class="hover:text-celeste">LinkedIn</a></li>
       <li><a href="{{ $links.youtube }}" class="hover:text-celeste">Charlas en YouTube</a></li>
+      {{ with site.GetPage "/blog" }}<li><a href="{{ .RelPermalink }}" class="hover:text-celeste">Blog</a></li>{{ end }}
       {{ with site.GetPage "/contribuye" }}<li><a href="{{ .RelPermalink }}" class="hover:text-celeste">Contribuye con tu agente</a></li>{{ end }}
     </ul>
   </div>

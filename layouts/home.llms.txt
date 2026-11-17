@@ -1,0 +1,38 @@
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+
+Indie Hackers Puerto Rico es la comunidad local de Indie Hackers (indiehackers.com) en Puerto Rico. La fundó y la organiza {{ site.Params.founder.name }} ({{ site.Params.founder.url }}). El sitio está en español y es open source: {{ site.Params.links.github }}.
+
+## Páginas
+
+- [Inicio]({{ site.Home.Permalink }}): qué es la comunidad, el Mastermind semanal, miembros y preguntas frecuentes
+{{- with site.GetPage "/trabajo-remoto" }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
+{{- end }}
+{{- with site.GetPage "/blog" }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
+{{- end }}
+{{- with site.GetPage "/contribuye" }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
+{{- end }}
+
+## Datos clave
+{{ with site.Params.mastermind }}
+- Mastermind: cada viernes, {{ .time }} (hora de Puerto Rico), online por {{ .platform }}. Organiza {{ .host }}. Registro: {{ site.Params.links.luma }}
+{{- end }}
+- Slack de la comunidad: {{ site.Params.links.slack }}
+- Miembros en el sitio: {{ len hugo.Data.miembros }}. Lugares para trabajar remoto evaluados: {{ len hugo.Data.lugares }}.
+- Redes: {{ site.Params.links.linkedin }}, {{ site.Params.links.twitter }}, {{ site.Params.links.youtube }}
+{{ with site.GetPage "/blog" }}{{ with .RegularPages.ByDate.Reverse }}
+## Blog
+{{ range first 20 . }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
+{{- end }}
+{{ end }}{{ end }}
+## Preguntas frecuentes
+{{ range site.Home.Params.faq }}
+### {{ .q }}
+
+{{ replace .a "{lugares}" (string (len hugo.Data.lugares)) | replaceRE `\]\((/[^)]*)\)` (printf "](%s$1)" (strings.TrimSuffix "/" site.BaseURL)) }}
+{{ end }}
