@@ -30,13 +30,12 @@
 }
 
 @layer components {
-  /* Hand-painted sign lettering: extra-wide black weight with a hard offset shadow. */
+  /* Hand-painted sign lettering: extra-wide black weight. */
   .rotulo {
     font-stretch: 125%;
     font-weight: 900;
     line-height: 0.92;
     letter-spacing: -0.01em;
-    text-shadow: 0.06em 0.06em 0 var(--color-flamboyan);
   }
   .display {
     font-stretch: 125%;

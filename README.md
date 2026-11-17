@@ -12,6 +12,9 @@ npm run build   # production build into public/
 
 ## Editing content
 
+Anyone can open a PR, and most people do it through a coding agent: [AGENTS.md](AGENTS.md) has the rules agents follow,
+and [/contribuye](https://www.indiehackerspr.com/contribuye/) has the prompts to paste.
+
 - **Members:** `data/miembros.yaml` (bio is Markdown) + photo in `assets/images/miembros/`
 - **Remote-work places:** `data/lugares.yaml` + photo in `assets/images/lugares/`
 - **Links** (Slack, Luma, X, YouTube, add-a-place form): `[params.links]` in `hugo.toml`
@@ -23,8 +26,9 @@ Photos are resized and converted to WebP at build time, so drop in originals.
 
 - `layouts/home.html` — home page sections
 - `layouts/trabajo-remoto/section.html` — remote-work guide with type filters
+- `layouts/contribuye/section.html` — "contribute with your agent" page with copyable prompts
 - `layouts/_partials/` — header, footer, logo (SVG), member and place cards, CSS pipeline
-- `assets/css/main.css` — Tailwind entry and color tokens (celeste, mango, flamboyán, adoquín, navy)
+- `assets/css/main.css` — Tailwind entry and color tokens (Puerto Rico flag: celeste, flamboyán, navy, plus adoquín)
 
 ## Deploy
 

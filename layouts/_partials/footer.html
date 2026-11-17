@@ -15,6 +15,7 @@
       <li><a href="{{ $links.luma }}" class="hover:text-celeste">Eventos en Luma</a></li>
       <li><a href="{{ $links.twitter }}" class="hover:text-celeste">X (Twitter)</a></li>
       <li><a href="{{ $links.youtube }}" class="hover:text-celeste">Charlas en YouTube</a></li>
+      {{ with site.GetPage "/contribuye" }}<li><a href="{{ .RelPermalink }}" class="hover:text-celeste">Contribuye con tu agente</a></li>{{ end }}
     </ul>
   </div>
   <div class="border-t border-white/15">

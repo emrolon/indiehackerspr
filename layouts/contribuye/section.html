@@ -1,0 +1,70 @@
+{{ define "main" }}
+  {{ $links := site.Params.links }}
+  {{/* Hero: the one prompt to copy. Nothing to fill in; the agent asks. */}}
+  <section class="bg-celeste">
+    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+      <h1 class="display text-4xl sm:text-6xl">{{ .Title }}</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed">
+        Copia esto, pégalo en tu agente (Claude Code, Codex, Cursor) y contesta sus preguntas. Él escribe tu perfil, hace el
+        cambio y abre el pull request. No tienes que saber Git.
+      </p>
+      <div class="mt-8 rounded-xl border-2 border-navy bg-white p-5 shadow-[6px_6px_0_var(--color-navy)] sm:p-6">
+        <p id="prompt" class="text-lg leading-relaxed [overflow-wrap:anywhere]">{{ .Params.prompt }}</p>
+        <button type="button" class="btn-solid mt-5" data-copy="prompt">Copiar prompt</button>
+      </div>
+    </div>
+  </section>
+
+  {{ partial "bandera.html" }}
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <h2 class="display text-3xl sm:text-4xl">Cómo funciona</h2>
+    <ol class="mt-8 grid gap-8 md:grid-cols-3">
+      {{ range $i, $step := slice
+        "Copia el prompt y pégalo en tu agente."
+        "Contesta lo que te pregunte: qué quieres cambiar, tu foto, a qué te dedicas. Él escribe el texto y te lo enseña antes."
+        "Él abre el pull request. Lo revisamos y sale publicado."
+      }}
+        <li class="border-t-4 border-navy pt-4">
+          <p class="display text-4xl text-flamboyan">{{ add $i 1 }}</p>
+          <p class="mt-3 text-lg leading-relaxed">{{ $step }}</p>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+
+  <section class="bg-celeste-light">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <h2 class="display text-3xl sm:text-4xl">¿Ya sabes qué quieres hacer?</h2>
+      <ul class="mt-8 grid gap-6 md:grid-cols-3">
+        {{ range .Params.atajos }}
+          <li id="{{ .id }}" class="flex min-w-0 scroll-mt-4 flex-col rounded-xl border-2 border-navy bg-white p-5">
+            <h3 class="text-xl font-bold">{{ .title }}</h3>
+            <p id="prompt-{{ .id }}" class="mt-3 text-navy/75 [overflow-wrap:anywhere]">{{ .text }}</p>
+            <button type="button" class="btn-outline mt-5 self-start" data-copy="prompt-{{ .id }}">Copiar prompt</button>
+          </li>
+        {{ end }}
+      </ul>
+      <p class="mt-10 max-w-3xl text-navy/70">
+        ¿No tienes agente o cuenta de GitHub? Escríbenos en <a href="{{ $links.slack }}" class="font-semibold underline underline-offset-2 hover:text-flamboyan">Slack</a>
+        y lo añadimos nosotros, o <a href="{{ $links.addPlace }}" class="font-semibold underline underline-offset-2 hover:text-flamboyan">sugiere un lugar con el formulario</a>.
+        ¿Prefieres hacerlo a mano? Las reglas están en <a href="{{ $links.github }}/blob/main/AGENTS.md" class="font-semibold underline underline-offset-2 hover:text-flamboyan">AGENTS.md</a>.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    for (const button of document.querySelectorAll("[data-copy]")) {
+      const label = button.textContent;
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(document.getElementById(button.dataset.copy).textContent.trim());
+          button.textContent = "¡Copiado! Pégalo en tu agente";
+        } catch {
+          button.textContent = "Selecciona el texto y cópialo";
+        }
+        setTimeout(() => (button.textContent = label), 2500);
+      });
+    }
+  </script>
+{{ end }}

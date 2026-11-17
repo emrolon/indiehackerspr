@@ -98,6 +98,7 @@
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <h2 class="display text-4xl sm:text-5xl">Miembros</h2>
       <p class="mt-4 max-w-2xl text-lg text-navy/70">Fundadores, ingenieros, periodistas y creadores que forman la comunidad.</p>
+      {{ with site.GetPage "/contribuye" }}<a href="{{ .RelPermalink }}#miembro" class="btn-outline mt-6">¿Eres parte? Añádete con tu agente</a>{{ end }}
       <ul class="mt-12 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-shuffle>
         {{ range hugo.Data.miembros }}
           {{ partial "miembro.html" . }}

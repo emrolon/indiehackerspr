@@ -16,6 +16,7 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
     youtube = 'https://www.youtube.com/channel/UCYqirt7QurXFiXkgMgz6QMA'
     luma = 'https://luma.com/indiehackers_pr'
     addPlace = 'https://indiehackerpr.paperform.co'
+    github = 'https://github.com/gabrieljoel/indiehackerspr'
   [params.founder]
     name = 'Gabriel J. Pérez Irizarry'
     url = 'https://gabezen.com'
@@ -58,6 +59,10 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
     name = 'Dónde trabajar remoto'
     pageRef = '/trabajo-remoto'
     weight = 30
+  [[menus.main]]
+    name = 'Contribuye'
+    pageRef = '/contribuye'
+    weight = 40
 
 [module]
   [[module.mounts]]
