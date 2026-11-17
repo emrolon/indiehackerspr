@@ -29,7 +29,10 @@ Anything bigger (a new section, a redesign, new dependencies), open an issue fir
 
 ## Rules
 
-- **Only change your own profile.** Don't edit, reorder or remove other members. Don't set `founder`.
+- **Only change your own profile.** Don't edit, reorder or remove other members. Don't set `founder`. To update a
+  profile, find the entry by the name the person gives you (the "update my profile" prompt on each member card includes
+  it) and say in the PR how they're connected to it (for example, their GitHub account is linked in the bio), so the
+  maintainer can tell it's really them.
 - **Site content is in Spanish** (Puerto Rico). Write the bio or place note in Spanish, even if the person asked in English.
 - **Member bio:** 2 to 4 sentences of Markdown about what the person builds or does, with at most 4 links (their
   product, site, LinkedIn, X, GitHub). Third person or first person, either is fine. No made-up facts: if you don't know

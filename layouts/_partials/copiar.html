@@ -1,0 +1,24 @@
+{{- /* Copy buttons, on any page: data-copy names the element whose text is copied, data-copy-text carries the text. */ -}}
+<script>
+  for (const button of document.querySelectorAll("[data-copy], [data-copy-text]")) {
+    const label = button.textContent;
+    button.addEventListener("click", async () => {
+      const text = button.dataset.copyText ?? document.getElementById(button.dataset.copy).textContent.trim();
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch {
+        // Older or locked-down browsers: copy from a hidden textarea instead
+        const area = Object.assign(document.createElement("textarea"), { value: text });
+        area.style.cssText = "position:fixed;opacity:0";
+        document.body.append(area);
+        area.select();
+        copied = document.execCommand("copy");
+        area.remove();
+      }
+      button.textContent = copied ? "¡Copiado! Pégalo en tu agente" : "No se pudo copiar: búscalo en /contribuye";
+      setTimeout(() => (button.textContent = label), 2500);
+    });
+  }
+</script>

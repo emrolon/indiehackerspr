@@ -1,5 +1,6 @@
 ---
 title: Contribuye con tu agente
+images: [images/og-contribuye.png]
 description: El sitio de Indie Hackers Puerto Rico es open source. Copia un prompt, pégalo en Claude Code, Codex o Cursor, contesta un par de preguntas y tu agente abre el pull request por ti.
 # Pasted into a coding agent as is: no blanks to fill. The agent reads AGENTS.md, asks the person what it needs and
 # opens the pull request. `prompt` is the one in the hero; `atajos` are shortcuts for people who already know.

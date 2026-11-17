@@ -22,6 +22,10 @@ and [/contribuye](https://www.indiehackerspr.com/contribuye/) has the prompts to
 
 Photos are resized and converted to WebP at build time, so drop in originals.
 
+**Icons and social images** (`static/favicon.ico`, `apple-touch-icon.png`, `icon-*.png`, `images/logo.png`,
+`images/og*.png`) are drawn by `python3 scripts/og.py` from `static/favicon.svg`. To give a page its own OG image, add
+it to `OG` in that script and set `images:` in the page's front matter.
+
 ## Layout
 
 - `layouts/home.html` — home page sections

@@ -1,20 +1,56 @@
 {{ define "main" }}
   {{ $links := site.Params.links }}
 
-  {{/* Hero: the sign-painter wall. */}}
-  <section class="bg-celeste">
-    <div class="mx-auto max-w-6xl px-4 pb-20 pt-12 sm:px-6 sm:pb-28 sm:pt-20">
-      <h1 class="rotulo text-[13vw] text-navy sm:text-[9vw] xl:text-[8.5rem]">
+  {{/* Hero: the sign-painter wall on the left; on the right, the community itself: a meetup photo, members' faces and
+     a stamp with the next Friday session (filled in by the script under the Mastermind section). */}}
+  {{ $miembros := hugo.Data.miembros }}
+  <section class="overflow-hidden bg-celeste">
+    <div class="mx-auto max-w-6xl px-4 pb-20 pt-12 sm:px-6 sm:pb-24 sm:pt-16">
+      <p class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-bold">
+        <span class="size-2 rounded-full bg-flamboyan"></span> Comunidad de emprendedores boricuas
+      </p>
+      <h1 class="rotulo mt-6 text-[13vw] text-navy sm:text-[8.5vw] xl:text-[7.5rem]">
         Indie Hackers<br>Puerto Rico
       </h1>
-      <p class="mt-8 max-w-xl text-xl font-medium sm:text-2xl">
-        El hogar de los emprendedores independientes boricuas. Somos la comunidad local de
-        <a href="https://www.indiehackers.com/" class="underline decoration-2 underline-offset-4 hover:text-flamboyan">Indie Hackers</a>:
-        nos reunimos online cada viernes y hablamos todos los días en Slack.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a href="{{ $links.slack }}" class="btn-solid">Únete a la comunidad en Slack</a>
-        <a href="#mastermind" class="btn-outline">Ver el Mastermind semanal</a>
+      <div class="mt-10 grid items-center gap-14 lg:grid-cols-[6fr_5fr]">
+      <div>
+        <p class="max-w-xl text-xl font-medium sm:text-2xl">
+          El hogar de los emprendedores independientes boricuas. Somos la comunidad local de
+          <a href="https://www.indiehackers.com/" class="underline decoration-2 underline-offset-4 hover:text-flamboyan">Indie Hackers</a>:
+          nos reunimos online cada viernes y hablamos todos los días en Slack.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="{{ $links.slack }}" class="btn-solid">Únete a la comunidad en Slack</a>
+          <a href="#mastermind" class="btn-outline">Ver el Mastermind semanal</a>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden="true">
+        {{ with resources.Get "images/meetups/meetup.jpg" }}
+          {{ with .Fill "720x560 webp smart" }}
+            <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="" fetchpriority="high"
+              class="w-full rotate-2 rounded-xl border-[6px] border-white object-cover shadow-[10px_10px_0_var(--color-navy)]">
+          {{ end }}
+        {{ end }}
+        <a href="#mastermind" tabindex="-1"
+          class="absolute -left-4 -top-6 flex size-32 -rotate-12 flex-col items-center justify-center rounded-full border-4 border-white bg-flamboyan text-center text-white shadow-lg transition hover:rotate-0 sm:size-36">
+          <span class="text-xs font-bold uppercase tracking-wider">Mastermind</span>
+          <span class="display text-2xl">Viernes</span>
+          <span class="text-sm font-semibold">10 AM online</span>
+        </a>
+        <div class="relative -mt-10 ml-auto flex w-fit -rotate-1 items-center gap-3 rounded-full border-2 border-navy bg-white py-2 pl-2 pr-5 shadow-[4px_4px_0_var(--color-navy)]">
+          <ul class="flex -space-x-3">
+            {{ range first 6 $miembros }}
+              {{ with resources.Get (printf "images/miembros/%s" .photo) }}
+                {{ with .Fill "96x96 webp smart" }}
+                  <li><img src="{{ .RelPermalink }}" width="48" height="48" alt="" class="size-11 rounded-full border-2 border-white object-cover"></li>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </ul>
+          <p class="text-sm font-bold leading-tight">+{{ sub (len $miembros) 6 }} miembros<br><span class="font-semibold text-navy/60">y creciendo</span></p>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -98,7 +134,14 @@
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <h2 class="display text-4xl sm:text-5xl">Miembros</h2>
       <p class="mt-4 max-w-2xl text-lg text-navy/70">Fundadores, ingenieros, periodistas y creadores que forman la comunidad.</p>
-      {{ with site.GetPage "/contribuye" }}<a href="{{ .RelPermalink }}#miembro" class="btn-outline mt-6">¿Eres parte? Añádete con tu agente</a>{{ end }}
+      {{ with site.GetPage "/contribuye" }}
+        <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+          {{ with index (where .Params.atajos "id" "miembro") 0 }}
+            <button type="button" class="btn-solid" data-copy-text="{{ .text }}">¿Eres parte? Copia el prompt para añadirte</button>
+          {{ end }}
+          <a href="{{ .RelPermalink }}" class="font-semibold underline underline-offset-4 hover:text-flamboyan">Cómo funciona con tu agente</a>
+        </div>
+      {{ end }}
       <ul class="mt-12 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-shuffle>
         {{ range hugo.Data.miembros }}
           {{ partial "miembro.html" . }}
