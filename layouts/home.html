@@ -48,7 +48,7 @@
               {{ end }}
             {{ end }}
           </ul>
-          <p class="text-sm font-bold leading-tight">+{{ sub (len $miembros) 6 }} miembros<br><span class="font-semibold text-navy/60">y creciendo</span></p>
+          <p class="text-sm font-bold leading-tight">{{ site.Params.slackMembers }} personas<br><span class="font-semibold text-navy/60">en el Slack</span></p>
         </div>
       </div>
       </div>
@@ -123,7 +123,7 @@
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <h2 class="display max-w-3xl text-4xl sm:text-5xl">¿Trabajas remoto, eres freelancer o trabajas solo?</h2>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
-        Nuestra comunidad en Slack es una cafetería virtual: nos ayudamos, nos relajamos un poco y discutimos estrategias de negocio.
+        Somos {{ site.Params.slackMembers }} personas en Slack. Es una cafetería virtual: nos ayudamos, nos relajamos un poco y discutimos estrategias de negocio.
       </p>
       <a href="{{ $links.slack }}" class="btn-light mt-8">Únete a nuestra comunidad</a>
     </div>
@@ -160,7 +160,7 @@
             <div>
               <h3 class="text-xl font-bold">{{ .q }}</h3>
               <div class="mt-3 leading-relaxed text-navy/75 [&_a]:font-semibold [&_a]:text-adoquin [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-flamboyan">
-                {{ replace .a "{lugares}" (string (len hugo.Data.lugares)) | $.RenderString }}
+                {{ replace (replace .a "{lugares}" (string (len hugo.Data.lugares))) "{slack}" (string site.Params.slackMembers) | $.RenderString }}
               </div>
             </div>
           {{ end }}

@@ -21,7 +21,7 @@ Indie Hackers Puerto Rico es la comunidad local de Indie Hackers (indiehackers.c
 {{ with site.Params.mastermind }}
 - Mastermind: cada viernes, {{ .time }} (hora de Puerto Rico), online por {{ .platform }}. Organiza {{ .host }}. Registro: {{ site.Params.links.luma }}
 {{- end }}
-- Slack de la comunidad: {{ site.Params.links.slack }}
+- Slack de la comunidad ({{ site.Params.slackMembers }} personas): {{ site.Params.links.slack }}
 - Miembros en el sitio: {{ len hugo.Data.miembros }}. Lugares para trabajar remoto evaluados: {{ len hugo.Data.lugares }}.
 - Redes: {{ site.Params.links.linkedin }}, {{ site.Params.links.twitter }}, {{ site.Params.links.youtube }}
 {{ with site.GetPage "/blog" }}{{ with .RegularPages.ByDate.Reverse }}
@@ -34,5 +34,5 @@ Indie Hackers Puerto Rico es la comunidad local de Indie Hackers (indiehackers.c
 {{ range site.Home.Params.faq }}
 ### {{ .q }}
 
-{{ replace .a "{lugares}" (string (len hugo.Data.lugares)) | replaceRE `\]\((/[^)]*)\)` (printf "](%s$1)" (strings.TrimSuffix "/" site.BaseURL)) }}
+{{ replace (replace .a "{lugares}" (string (len hugo.Data.lugares))) "{slack}" (string site.Params.slackMembers) | replaceRE `\]\((/[^)]*)\)` (printf "](%s$1)" (strings.TrimSuffix "/" site.BaseURL)) }}
 {{ end }}

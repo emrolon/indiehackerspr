@@ -2,10 +2,10 @@
 title: Indie Hackers Puerto Rico | Comunidad de emprendedores
 description: Comunidad de emprendedores independientes, freelancers y trabajadores remotos en Puerto Rico. Mastermind online cada viernes y conversación diaria en Slack.
 # Questions people (and AI assistants) ask about the community, answered on the home page. Markdown; {lugares} is the
-# number of places in data/lugares.yaml.
+# number of places in data/lugares.yaml, {slack} is params.slackMembers in hugo.toml.
 faq:
   - q: ¿Qué es Indie Hackers Puerto Rico?
-    a: Indie Hackers Puerto Rico es la comunidad local de [Indie Hackers](https://www.indiehackers.com/) en Puerto Rico. Reúne a emprendedores independientes, freelancers y gente que trabaja remoto que construyen negocios propios desde la Isla o para ella. Se reúne online cada viernes en un Mastermind y conversa todos los días en Slack. La fundó y la organiza Gabriel J. Pérez Irizarry.
+    a: Indie Hackers Puerto Rico es la comunidad local de [Indie Hackers](https://www.indiehackers.com/) en Puerto Rico. Reúne a emprendedores independientes, freelancers y gente que trabaja remoto que construyen negocios propios desde la Isla o para ella. Se reúne online cada viernes en un Mastermind y conversa todos los días en un Slack de {slack} personas. La fundó y la organiza Gabriel J. Pérez Irizarry.
   - q: ¿Qué es el Mastermind de los viernes?
     a: Es una sesión online por Google Meet cada viernes de 10:00 a 11:00 AM, hora de Puerto Rico. Miembros presentan su venture y reciben feedback táctico del grupo para avanzar cada semana. La organiza Emanuel Rolon y el registro es en [Luma](https://luma.com/indiehackers_pr).
   - q: ¿Cómo me uno a la comunidad?
