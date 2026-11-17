@@ -19,9 +19,11 @@
     </div>
   </section>
 
+  {{ partial "bandera.html" }}
+
   {{/* Weekly mastermind */}}
   {{ with site.Params.mastermind }}
-  <section id="mastermind" class="scroll-mt-4 bg-mango">
+  <section id="mastermind" class="scroll-mt-4">
     <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[5fr_6fr]">
       <div>
         <h2 class="display text-4xl sm:text-5xl">Mastermind cada viernes</h2>
@@ -53,7 +55,7 @@
             {{ with resources.Get (printf "images/%s" .src) }}
               {{ with .Process "webp" }}
                 <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $alt }}"
-                  class="aspect-[3/2] w-full rounded-lg border-4 border-white object-cover even:mt-10" loading="lazy">
+                  class="aspect-[3/2] w-full rounded-lg border-4 border-navy object-cover even:mt-10" loading="lazy">
               {{ end }}
             {{ end }}
           {{ end }}
@@ -81,10 +83,10 @@
   {{ end }}
 
   {{/* Slack */}}
-  <section class="bg-navy text-white">
+  <section class="bg-flamboyan text-white">
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <h2 class="display max-w-3xl text-4xl sm:text-5xl">¿Trabajas remoto, eres freelancer o trabajas solo?</h2>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
         Nuestra comunidad en Slack es una cafetería virtual: nos ayudamos, nos relajamos un poco y discutimos estrategias de negocio.
       </p>
       <a href="{{ $links.slack }}" class="btn-light mt-8">Únete a nuestra comunidad</a>
@@ -125,9 +127,9 @@
   {{ end }}
 
   <script>
-    // Shuffle members on each visit so nobody is always listed first.
+    // Shuffle members on each visit so nobody is always listed first; only the founder (data-pin) stays put.
     for (const list of document.querySelectorAll("[data-shuffle]")) {
-      const items = [...list.children];
+      const items = [...list.children].filter((el) => !el.hasAttribute("data-pin"));
       for (let i = items.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [items[i], items[j]] = [items[j], items[i]];

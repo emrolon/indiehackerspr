@@ -2,13 +2,13 @@
 @plugin "@tailwindcss/typography";
 @source "hugo_stats.json";
 
-/* Paint colors from the walls of Viejo San Juan. */
+/* The colors of the Puerto Rico flag: celeste (the original 1895 blue), flamboyán red and white, with navy (the
+   official blue) as ink. No yellow: celeste next to yellow read as the Ukrainian flag. */
 @theme {
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
 
   --color-celeste: #5bb5e8;
   --color-celeste-light: #d6eefb;
-  --color-mango: #f6b833;
   --color-flamboyan: #e23b2e;
   --color-adoquin: #4a6b82;
   --color-navy: #14213d;
@@ -56,5 +56,5 @@
   @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white;
 }
 @utility btn-light {
-  @apply btn bg-mango text-navy hover:bg-white;
+  @apply btn bg-white text-navy hover:bg-navy hover:text-white;
 }

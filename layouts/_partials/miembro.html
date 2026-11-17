@@ -1,11 +1,12 @@
-<li>
+<li{{ if .founder }} data-pin{{ end }}>
   {{ with resources.Get (printf "images/miembros/%s" $.photo) }}
     {{ with .Fill "320x320 webp smart" }}
       <img src="{{ .RelPermalink }}" width="160" height="160" alt="Foto de {{ $.name }}" loading="lazy" decoding="async"
-        class="size-28 rounded-full border-4 border-mango object-cover">
+        class="size-28 rounded-full border-4 border-celeste object-cover">
     {{ end }}
   {{ end }}
   <h3 class="mt-5 text-xl font-bold">{{ .name }}</h3>
+  {{ with .founder }}<p class="mt-2 inline-block rounded-full bg-flamboyan px-3 py-0.5 text-sm font-bold text-white">{{ . }}</p>{{ end }}
   <div class="mt-2 leading-relaxed text-navy/75 [&_a]:font-semibold [&_a]:text-adoquin [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-flamboyan">
     {{ .bio | markdownify }}
   </div>

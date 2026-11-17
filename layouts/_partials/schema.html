@@ -7,6 +7,7 @@
   "logo" ("images/logo.png" | absURL)
   "description" site.Params.description
   "areaServed" (dict "@type" "Place" "name" "Puerto Rico")
+  "founder" (dict "@type" "Person" "name" site.Params.founder.name "url" site.Params.founder.url)
   "sameAs" (slice site.Params.links.twitter site.Params.links.youtube site.Params.links.luma)
 -}}
 {{- $graph := slice $org -}}

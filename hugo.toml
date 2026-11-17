@@ -7,6 +7,8 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
 
 [params]
   images = ['images/og.png']
+  # Typed into ChatGPT, Claude, Perplexity or Google AI Mode by the footer's "Pregúntale a tu IA" keys.
+  preguntaIA = '¿Qué es Indie Hackers Puerto Rico (indiehackerspr.com)? Quién la fundó, qué hacen en el Mastermind de los viernes y cómo me uno a la comunidad en Slack.'
   description = 'El hogar de los emprendedores independientes en Puerto Rico. Un Mastermind online cada viernes y una comunidad en Slack para quienes trabajan remoto, son freelancers o trabajan solos.'
   [params.links]
     slack = 'https://communityinviter.com/apps/indiehackerspr/indie-hackers-puerto-rico'
@@ -14,6 +16,9 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
     youtube = 'https://www.youtube.com/channel/UCYqirt7QurXFiXkgMgz6QMA'
     luma = 'https://luma.com/indiehackers_pr'
     addPlace = 'https://indiehackerpr.paperform.co'
+  [params.founder]
+    name = 'Gabriel J. Pérez Irizarry'
+    url = 'https://gabezen.com'
   # Weekly online session, published on the Luma calendar.
   [params.mastermind]
     name = 'Mastermind: Feedback para nuestros ventures'

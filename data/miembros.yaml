@@ -1,4 +1,9 @@
-# Bios are Markdown. Photos live in assets/images/miembros/.
+# Bios are Markdown. Photos live in assets/images/miembros/. `founder` labels and pins the founder first.
+- name: Gabriel J. Pérez Irizarry
+  photo: gabriel.jpg
+  founder: Fundador y organizador
+  bio: Fundé Indie Hackers Puerto Rico y la sigo corriendo. En [Gabezen](https://gabezen.com) configuro Claude para firmas que le facturan a clientes, empezando con [uno de sus trabajos](https://gabezen.com/hand-off-one-job/), gratis y sin reunión. Llevo 15 años escribiendo código y más de 50 apps en producción. Lideré la tecnología de CITYROW hasta su adquisición por WaterRower, y creé y vendí [Peer Feedback](https://www.peerfeedback.io/), que evaluó 323,000 revisiones entre pares de 11,000 estudiantes de Georgia Tech. Co-fundador y CTO de [Nexrizen](https://www.nexrizen.com), que corre en Claude desde enero de 2026. Inventor en dos patentes de IBM. Ex-alumno del Colegio y Georgia Tech. Conecta conmigo en [LinkedIn](https://www.linkedin.com/in/gabrieljperezirizarry/).
+
 - name: Javier Rosario
   photo: javier.jpg
   bio: Ingeniero multifacetico especializado en el area de DevOps y dinamica de equipos. Puedes ver mis trabajos de Maker en [MightyJRMods](https://www.mightyjrmods.com) y en [LinkedIn](https://www.linkedin.com/in/javierorosario/).
@@ -26,10 +31,6 @@
 - name: José Francisco Rodríguez Zayas
   photo: chisko.jpg
   bio: Tiene más de tres años de experiencia trabajando principalmente como web developer. Analista en programación con vasta experiencia en el desarrollo en diferentes entornos técnicos. [Pagina personal](https://www.chisko.dev/) y [LinkedIn](https://www.linkedin.com/in/jrodriguez-zayas/).
-
-- name: Gabriel J. Pérez Irizarry
-  photo: gabriel.jpg
-  bio: Embajador local de [Indie Hackers](https://www.indiehackers.com/). Fundador de [Peer Feedback](https://www.peerfeedback.io/), [Koipun](https://www.koipun.com/) y [Caproni](https://caproni.fm). Ex-alumno del Colegio y Georgia Tech. Sigueme en Twitter en [español](https://twitter.com/gabrielperezi) e [ingles](https://twitter.com/gaburieru4649).
 
 - name: Juan G. De Jesús Torres
   photo: juan.png

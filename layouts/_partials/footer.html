@@ -1,5 +1,6 @@
 {{ $links := site.Params.links }}
 <footer class="bg-navy text-white">
+  {{ partial "bandera.html" }}
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1fr_auto]">
     <div class="max-w-md">
       <a href="{{ site.Home.RelPermalink }}" class="inline-flex items-center gap-3 text-lg font-bold">
@@ -7,13 +8,19 @@
         {{ site.Title }}
       </a>
       <p class="mt-4 text-white/70">El hogar de los emprendedores independientes. Comunidad local de <a href="https://www.indiehackers.com/" class="underline hover:text-white">Indie Hackers</a> en Puerto Rico.</p>
+      <p class="mt-4 text-white/70">Fundada y organizada por {{ site.Params.founder.name }}, de <a href="{{ site.Params.founder.url }}" class="font-semibold text-white underline hover:text-celeste">Gabezen</a>.</p>
     </div>
     <ul class="flex flex-col gap-3 font-semibold">
-      <li><a href="{{ $links.slack }}" class="hover:text-mango">Comunidad en Slack</a></li>
-      <li><a href="{{ $links.luma }}" class="hover:text-mango">Eventos en Luma</a></li>
-      <li><a href="{{ $links.twitter }}" class="hover:text-mango">X (Twitter)</a></li>
-      <li><a href="{{ $links.youtube }}" class="hover:text-mango">Charlas en YouTube</a></li>
+      <li><a href="{{ $links.slack }}" class="hover:text-celeste">Comunidad en Slack</a></li>
+      <li><a href="{{ $links.luma }}" class="hover:text-celeste">Eventos en Luma</a></li>
+      <li><a href="{{ $links.twitter }}" class="hover:text-celeste">X (Twitter)</a></li>
+      <li><a href="{{ $links.youtube }}" class="hover:text-celeste">Charlas en YouTube</a></li>
     </ul>
+  </div>
+  <div class="border-t border-white/15">
+    <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      {{ partial "pregunta-ia.html" }}
+    </div>
   </div>
   <div class="border-t border-white/15">
     <p class="mx-auto max-w-6xl px-4 py-6 text-sm text-white/60 sm:px-6">
