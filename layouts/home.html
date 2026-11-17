@@ -1,0 +1,109 @@
+{{ define "main" }}
+  {{ $links := site.Params.links }}
+
+  {{/* Hero: the sign-painter wall. */}}
+  <section class="bg-celeste">
+    <div class="mx-auto max-w-6xl px-4 pb-20 pt-12 sm:px-6 sm:pb-28 sm:pt-20">
+      <h1 class="rotulo text-[13vw] text-navy sm:text-[9vw] xl:text-[8.5rem]">
+        Indie Hackers<br>Puerto Rico
+      </h1>
+      <p class="mt-8 max-w-xl text-xl font-medium sm:text-2xl">
+        El hogar de los emprendedores independientes boricuas. Somos la comunidad local de
+        <a href="https://www.indiehackers.com/" class="underline decoration-2 underline-offset-4 hover:text-flamboyan">Indie Hackers</a>:
+        nos juntamos cada mes en Santurce y hablamos todos los días en Slack.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="{{ $links.slack }}" class="btn-solid">Únete a la comunidad en Slack</a>
+        <a href="#meetups" class="btn-outline">Ver los meetups</a>
+      </div>
+    </div>
+  </section>
+
+  {{/* Meetups */}}
+  <section id="meetups" class="scroll-mt-4 bg-mango">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[5fr_6fr]">
+      <div>
+        <h2 class="display text-4xl sm:text-5xl">Meetups cada mes</h2>
+        <p class="mt-6 max-w-prose text-lg leading-relaxed">
+          Nos reunimos todos los meses en <a href="{{ $links.venue }}" class="font-semibold underline underline-offset-4 hover:text-flamboyan">Piloto 151, Santurce Suites</a>
+          para discutir ideas de negocio, hacer amigos y compartir pizzas y cervezas.
+          Anunciamos cada evento en X, y las charlas pasadas están en YouTube.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="{{ $links.twitter }}" class="btn-solid">Ver próximos eventos</a>
+          <a href="{{ $links.youtube }}" class="btn-outline">Ver charlas anteriores</a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        {{ range slice
+          (dict "src" "meetups/meetup.jpg" "alt" "Grupo de Indie Hackers Puerto Rico en un meetup en Piloto 151, Santurce")
+          (dict "src" "meetups/cervezas.jpg" "alt" "Miembros de Indie Hackers Puerto Rico compartiendo cervezas después de un meetup")
+        }}
+          {{ $alt := .alt }}
+          {{ with resources.Get (printf "images/%s" .src) }}
+            {{ with .Process "webp" }}
+              <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $alt }}"
+                class="aspect-[3/2] w-full rounded-lg border-4 border-white object-cover even:mt-10" loading="lazy">
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{/* Slack */}}
+  <section class="bg-navy text-white">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <h2 class="display max-w-3xl text-4xl sm:text-5xl">¿Trabajas remoto, eres freelancer o trabajas solo?</h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
+        Nuestra comunidad en Slack es una cafetería virtual: nos ayudamos, nos relajamos un poco y discutimos estrategias de negocio.
+      </p>
+      <a href="{{ $links.slack }}" class="btn-light mt-8">Únete a nuestra comunidad</a>
+    </div>
+  </section>
+
+  {{/* Members */}}
+  <section id="miembros" class="scroll-mt-4">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <h2 class="display text-4xl sm:text-5xl">Miembros</h2>
+      <p class="mt-4 max-w-2xl text-lg text-navy/70">Fundadores, ingenieros, periodistas y creadores que forman la comunidad.</p>
+      <ul class="mt-12 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-shuffle>
+        {{ range hugo.Data.miembros }}
+          {{ partial "miembro.html" . }}
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+
+  {{/* Remote work teaser */}}
+  {{ with site.GetPage "/trabajo-remoto" }}
+    <section class="border-t-4 border-navy bg-celeste-light">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div class="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <h2 class="display text-4xl sm:text-5xl">¿Dónde trabajar remoto?</h2>
+            <p class="mt-4 max-w-2xl text-lg text-navy/70">Cafeterías y coworkings con buen Wi‑Fi y enchufes, evaluados por la comunidad.</p>
+          </div>
+          <a href="{{ .RelPermalink }}" class="btn-solid">Ver los {{ len hugo.Data.lugares }} lugares</a>
+        </div>
+        <ul class="mt-12 grid gap-8 md:grid-cols-3">
+          {{ range first 3 (sort hugo.Data.lugares "rating" "desc") }}
+            {{ partial "lugar.html" . }}
+          {{ end }}
+        </ul>
+      </div>
+    </section>
+  {{ end }}
+
+  <script>
+    // Shuffle members on each visit so nobody is always listed first.
+    for (const list of document.querySelectorAll("[data-shuffle]")) {
+      const items = [...list.children];
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      list.append(...items);
+    }
+  </script>
+{{ end }}

@@ -1,0 +1,16 @@
+{
+  "name": "indiehackerspr",
+  "version": "1.0.0",
+  "description": "IndieHackersPR website",
+  "scripts": {
+    "dev": "hugo server --buildDrafts --disableFastRender",
+    "build": "hugo build --gc --minify"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "@tailwindcss/typography": "^0.5.20",
+    "tailwindcss": "^4.3.5"
+  },
+  "private": true
+}

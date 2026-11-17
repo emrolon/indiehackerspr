@@ -1,0 +1,43 @@
+{{- $org := dict
+  "@type" "Organization"
+  "@id" (printf "%s#organizacion" site.Home.Permalink)
+  "name" site.Title
+  "alternateName" "Indie Hackers PR"
+  "url" site.Home.Permalink
+  "logo" ("images/logo.png" | absURL)
+  "description" site.Params.description
+  "areaServed" (dict "@type" "Place" "name" "Puerto Rico")
+  "sameAs" (slice site.Params.links.twitter site.Params.links.youtube)
+-}}
+{{- $graph := slice $org -}}
+{{- if .IsHome -}}
+  {{- $graph = $graph | append (dict
+    "@type" "WebSite"
+    "@id" (printf "%s#sitio" site.Home.Permalink)
+    "name" site.Title
+    "alternateName" "Indie Hackers PR"
+    "url" site.Home.Permalink
+    "inLanguage" site.Language.Locale
+    "publisher" (dict "@id" (printf "%s#organizacion" site.Home.Permalink))
+  ) -}}
+{{- end -}}
+{{- if eq .Path "/trabajo-remoto" -}}
+  {{- $items := slice -}}
+  {{- range $i, $l := sort hugo.Data.lugares "rating" "desc" -}}
+    {{- $place := dict
+      "@type" (cond (eq $l.type "coworking") "LocalBusiness" (cond (eq $l.type "cafeteria") "CafeOrCoffeeShop" (cond (eq $l.type "comida-rapida") "FastFoodRestaurant" "Restaurant")))
+      "name" $l.name
+      "address" (dict "@type" "PostalAddress" "addressLocality" $l.area "addressCountry" "PR")
+      "hasMap" $l.directions
+    -}}
+    {{- with $l.website }}{{ $place = merge $place (dict "url" .) }}{{ end -}}
+    {{- $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "item" $place) -}}
+  {{- end -}}
+  {{- $graph = $graph | append (dict
+    "@type" "ItemList"
+    "name" .Title
+    "numberOfItems" (len $items)
+    "itemListElement" $items
+  ) -}}
+{{- end -}}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS }}</script>

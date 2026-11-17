@@ -1,0 +1,12 @@
+<li>
+  {{ with resources.Get (printf "images/miembros/%s" $.photo) }}
+    {{ with .Fill "320x320 webp smart" }}
+      <img src="{{ .RelPermalink }}" width="160" height="160" alt="Foto de {{ $.name }}" loading="lazy" decoding="async"
+        class="size-28 rounded-full border-4 border-mango object-cover">
+    {{ end }}
+  {{ end }}
+  <h3 class="mt-5 text-xl font-bold">{{ .name }}</h3>
+  <div class="mt-2 leading-relaxed text-navy/75 [&_a]:font-semibold [&_a]:text-adoquin [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-flamboyan">
+    {{ .bio | markdownify }}
+  </div>
+</li>

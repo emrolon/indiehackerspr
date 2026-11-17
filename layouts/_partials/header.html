@@ -1,0 +1,17 @@
+<header class="{{ if .IsHome }}bg-celeste{{ else }}bg-white border-b-4 border-navy{{ end }}">
+  <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-3 px-4 py-4 sm:px-6" aria-label="Principal">
+    <a href="{{ site.Home.RelPermalink }}" class="flex items-center gap-3 font-bold">
+      {{ partial "logo.html" (dict "class" "size-10") }}
+      <span class="hidden sm:inline">{{ site.Title }}</span>
+    </a>
+    <ul class="flex flex-wrap gap-x-6 gap-y-1 text-sm font-semibold">
+      {{ range site.Menus.main }}
+        {{ $current := $.IsMenuCurrent .Menu . }}
+        <li>
+          <a href="{{ .URL }}" class="underline-offset-4 hover:underline {{ if $current }}underline decoration-flamboyan decoration-2{{ end }}"
+            {{ if $current }}aria-current="page"{{ end }}>{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>

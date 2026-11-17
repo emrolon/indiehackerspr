@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ $title := cond (eq .Kind "404") "Página no encontrada" .Title }}
+<title>{{ if .IsHome }}{{ $title }}{{ else }}{{ $title }} | {{ site.Title }}{{ end }}</title>
+{{ if or (eq .Kind "404") (not hugo.IsProduction) }}
+  <meta name="robots" content="noindex">
+{{ else }}
+  <link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
+{{ $description := or .Description site.Params.description | plainify | strings.Truncate 160 }}
+<meta name="description" content="{{ $description }}">
+<meta name="theme-color" content="#5bb5e8">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/png" sizes="16x16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap">
+{{ partial "opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}
+{{ partial "schema.html" . }}

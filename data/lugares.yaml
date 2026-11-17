@@ -1,0 +1,202 @@
+# Places to work remotely. Photos live in assets/images/lugares/.
+# type: cafeteria | coworking | comida-rapida | restaurante
+# cost: 1–3 ($–$$$), omit if unknown. wifi: rapido | bueno | lento, omit if unknown.
+# rating: out of 10.
+- name: Barista Squared
+  area: Condado, San Juan
+  photo: barista-squared.png
+  type: cafeteria
+  note: Buen café/comida y buen trato. Plus tienen wifi y chargers.
+  stableWifi: false
+  plugs: true
+  parking: Mejor llega en Uber; estacionamiento cerca pagando
+  rating: 10
+  directions: https://www.google.com/maps/place//data=!4m2!3m1!1s0x8c036fff2a5a1085:0x7b10dfeaa10bc3f5
+  website: https://www.instagram.com/barista.squared/
+
+- name: Starbucks Mayagüez
+  area: Mayagüez
+  photo: starbucks-mayaguez.jpeg
+  type: cafeteria
+  note: Es cómodo, no se llena tanto de gente. Aire acondicionado bien frío.
+  cost: 1
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: Estacionamiento propio gratis, compartido
+  rating: 8
+  food: [Aperitivos, Sandwiches]
+  directions: https://www.google.com/maps/place/Starbucks+Coffee/@18.169788,-67.1507355,19.72z/data=!4m5!3m4!1s0x8c02b38cbeba2343:0x2cd4c425eb06e5bc!8m2!3d18.1695777!4d-67.1507013
+
+- name: Starbucks Los Paseos
+  area: Paseo Las Cumbres, San Juan
+  photo: starbucks-los-paseos.jpg
+  type: cafeteria
+  note: Lugar cómodo y bueno para trabajar con tu laptop.
+  cost: 3
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: En la calle, compartido o propio gratis
+  rating: 9
+  food: [Café, Sandwiches, Dulces]
+  directions: https://www.google.com/maps/place/Starbucks/@18.3577216,-66.062339,17z/data=!3m1!4b1!4m5!3m4!1s0x8c03681c9406e005:0x9e555faa6931bf5d!8m2!3d18.3577165!4d-66.0601503
+  website: https://www.starbuckspr.com/
+
+- name: Casa Pizzelle (antes Latte que Latte)
+  area: 273 Av. Domenech, San Juan
+  photo: latte-que-latte.png
+  type: cafeteria
+  note: Súper buen servicio.
+  cost: 1
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: En la calle
+  rating: 10
+  food: [Sandwiches, Café, Dulces]
+  directions: https://www.google.com/maps/place/Latte+que+Latte/@18.4141724,-66.0655753,17z/data=!3m1!4b1!4m5!3m4!1s0x8c03689149256eb7:0x58461f81b914809b!8m2!3d18.4141724!4d-66.0633866
+
+- name: Tazón Coffee
+  area: Calle Marginal, Bayamón
+  photo: tazon.jpeg
+  type: cafeteria
+  note: Ambiente relajado y profesional. Música buena. Asientos con bastante privacidad.
+  cost: 1
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: Estacionamiento propio gratis o en la calle
+  rating: 9
+  food: [Café, Aperitivos, Platos principales, Sandwiches]
+  directions: https://www.google.com/maps?q=Taz%C3%B3n+Coffee+Shop,+Calle+Marginal+%23+E3+Urb.+Santa+Cruz,+Plaza+2,+Bayam%C3%B3n,+00961&ftid=0x8c036a2653de4c4d:0xf10a4db925e2197a&hl=en-US&gl=us
+  website: https://tazon.coffee/
+
+- name: Engine-4
+  area: Bayamón
+  photo: engine-4.png
+  type: coworking
+  note: Se necesita membresía pero tienen una comunidad activa y siempre tienen actividades corriendo. Pronto ofrecerán membresías de hackerspace (ahora mismo es solo coworking).
+  cost: 2
+  wifi: rapido
+  stableWifi: true
+  plugs: true
+  parking: Estacionamiento propio gratis, compartido
+  rating: 9
+  directions: https://www.google.com/maps/place/Engine-4/@18.3953444,-66.1541631,17z/data=!3m1!4b1!4m5!3m4!1s0x8c036a24d0210797:0x53e553aa02bd55af!8m2!3d18.3953444!4d-66.1526101
+  website: https://engine-4.com
+
+- name: McDonald's Mayagüez Terrace
+  area: Mayagüez
+  photo: mcdonalds-mayaguez.jpeg
+  type: comida-rapida
+  note: Por el día es perfecto para trabajar. En la tarde y noche se llena más de estudiantes.
+  cost: 1
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: Estacionamiento propio gratis
+  rating: 7
+  food: [Café, Sandwiches, Platos principales]
+  directions: https://www.google.com/maps/place/McDonald's/@18.2100049,-67.1502037,16.5z/data=!4m5!3m4!1s0x0:0x640ef30978ae7655!8m2!3d18.2134549!4d-67.148923
+
+- name: Webneticos Internet Studios
+  area: Guaynabo
+  photo: webneticos.jpg
+  type: coworking
+  note: Estudio para creadores de contenido (podcasts, video, streaming). Eliminan las complicaciones técnicas para que te enfoques en el contenido.
+  cost: 2
+  wifi: rapido
+  stableWifi: true
+  plugs: true
+  parking: Estacionamiento propio gratis
+  rating: 10
+  directions: https://www.google.com/maps/place//data=!4m2!3m1!1s0x8c034276a48fe727:0x7c7b055549da6344
+  website: https://www.webneticos.com/
+
+- name: Café Don Juan
+  area: 380 Calle Juan Calaf, San Juan, 00918
+  photo: cafe-don-juan.jpg
+  type: cafeteria
+  note: Buen ambiente.
+  cost: 1
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: Compartido
+  rating: 8
+  food: [Café, Sandwiches]
+  website: https://cafedonjuan.com
+  directions: https://www.google.com/maps/place/Caf%C3%A9+Don+Juan/@18.426597,-66.0703802,17z/data=!4m12!1m6!3m5!1s0x8c0368c0ab0812a9:0x64a2409039ed4d7e!2sCaf%C3%A9+Don+Juan!8m2!3d18.4266183!4d-66.0703588!3m4!1s0x8c0368c0ab0812a9:0x64a2409039ed4d7e!8m2!3d18.4266183!4d-66.0703588
+
+- name: Piloto 151 Santurce Suites
+  area: Santurce
+  photo: piloto-151.jpg
+  type: coworking
+  note: Un coworking space moderno con un ambiente muy agradable.
+  cost: 2
+  wifi: rapido
+  stableWifi: true
+  plugs: true
+  parking: En la calle o cerca pagando
+  rating: 9
+  directions: https://www.google.com/maps/place//data=!4m2!3m1!1s0x8c036f35f21fc8f3:0xa3c47c1fa07d3
+  website: https://piloto151.com/our-locations/santurce-suites/
+
+- name: Starbucks Plaza Olmedo
+  area: Lomas Verdes, San Juan
+  photo: starbucks-plaza-olmedo.jpg
+  type: cafeteria
+  note: El estacionamiento se pone difícil durante el día, excepto en las mañanas. Por la noche no hay tanta gente.
+  cost: 2
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: Compartido
+  rating: 7
+  food: [Café, Sandwiches, Dulces]
+  directions: https://www.google.com/maps/place/Starbucks+Coffee/@18.3693254,-66.0738565,13z/data=!4m5!3m4!1s0x8c03683c5b6318af:0x286e82342e858495!8m2!3d18.3696435!4d-66.0740495
+  website: https://www.starbucks.com/store-locator/store/1013561/plaza-olmedo-lomas-verdes-ave-1790-rio-piedras-san-juan-pr-926-
+
+- name: Latin Gyros
+  area: Luquillo
+  photo: latin-gyros.jpg
+  type: restaurante
+  note: Buena comida, brunch todo el día. Vale la pena para aquellos que deseen disfrutar de la playa, sol, o quieran estar en el área noreste de la isla. Se come muy bien.
+  cost: 2
+  wifi: lento
+  stableWifi: true
+  plugs: false
+  parking: En la calle
+  rating: 8
+  food: [Café, Aperitivos, Sandwiches, Platos principales, Dulces]
+  directions: https://www.google.com/maps/place//data=!4m2!3m1!1s0x8c04990ae58dc04b:0xef1607746e6df843
+  website: https://shor.by/latingyros
+
+- name: Starbucks Garden Hills
+  area: Garden Hills Plaza, Guaynabo
+  photo: starbucks-guaynabo.jpg
+  type: cafeteria
+  note: Starbucks en Garden Hills Plaza, con estacionamiento propio.
+  cost: 2
+  wifi: bueno
+  stableWifi: true
+  plugs: true
+  parking: Estacionamiento propio gratis
+  rating: 7
+  food: [Café, Sandwiches, Dulces]
+  directions: https://www.google.com/maps/place/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%90%E3%83%83%E3%82%AF%E3%82%B9/@18.4190476,-66.0802667,14z/data=!4m5!3m4!1s0x0:0x5f930a5b68446f12!8m2!3d18.400002!4d-66.1080569
+
+- name: Buen Vecino Café
+  area: San Juan
+  photo: buen-vecino.jpg
+  type: cafeteria
+  note: Tienen buen desayuno. Se llena bastante por las mañanas.
+  cost: 2
+  wifi: lento
+  stableWifi: true
+  plugs: false
+  parking: En la calle
+  rating: 8
+  food: [Café, Aperitivos, Sandwiches, Platos principales, Dulces]
+  directions: https://www.google.com/maps/place//data=!4m2!3m1!1s0x8c036896159cd50b:0xbc927a54a8c27a7d

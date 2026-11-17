@@ -1,0 +1,24 @@
+[build.environment]
+  GO_VERSION = "1.27.4"
+  HUGO_VERSION = "0.170.0"
+  NODE_VERSION = "24.22.3"
+  TZ = "America/New_York"
+
+[build]
+  publish = "public"
+  command = """\
+    git config --global core.quotepath false && \
+    hugo build --gc --minify --baseURL "${URL}"
+    """
+
+[context.deploy-preview]
+  command = """\
+    git config --global core.quotepath false && \
+    hugo build --gc --minify --buildFuture --environment preview --baseURL "${DEPLOY_PRIME_URL}"
+    """
+
+[context.branch-deploy]
+  command = """\
+    git config --global core.quotepath false && \
+    hugo build --gc --minify --environment preview --baseURL "${DEPLOY_PRIME_URL}"
+    """

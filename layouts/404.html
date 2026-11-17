@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <section class="bg-celeste">
+    <div class="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+      <h1 class="rotulo text-6xl sm:text-8xl">404</h1>
+      <p class="mt-8 max-w-xl text-xl font-medium">Esta página no existe o se mudó. Puede que el enlace esté viejo.</p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="{{ site.Home.RelPermalink }}" class="btn-solid">Ir al inicio</a>
+        {{ with site.GetPage "/trabajo-remoto" }}<a href="{{ .RelPermalink }}" class="btn-outline">Ver dónde trabajar remoto</a>{{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

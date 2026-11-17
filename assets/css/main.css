@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "hugo_stats.json";
+
+/* Paint colors from the walls of Viejo San Juan. */
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  --color-celeste: #5bb5e8;
+  --color-celeste-light: #d6eefb;
+  --color-mango: #f6b833;
+  --color-flamboyan: #e23b2e;
+  --color-adoquin: #4a6b82;
+  --color-navy: #14213d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-flamboyan);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Hand-painted sign lettering: extra-wide black weight with a hard offset shadow. */
+  .rotulo {
+    font-stretch: 125%;
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-shadow: 0.06em 0.06em 0 var(--color-flamboyan);
+  }
+  .display {
+    font-stretch: 125%;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility btn {
+  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors;
+}
+@utility btn-solid {
+  @apply btn bg-navy text-white hover:bg-flamboyan;
+}
+@utility btn-outline {
+  @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white;
+}
+@utility btn-light {
+  @apply btn bg-mango text-navy hover:bg-white;
+}
