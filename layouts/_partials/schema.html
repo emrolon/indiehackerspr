@@ -7,7 +7,7 @@
   "logo" ("images/logo.png" | absURL)
   "description" site.Params.description
   "areaServed" (dict "@type" "Place" "name" "Puerto Rico")
-  "sameAs" (slice site.Params.links.twitter site.Params.links.youtube)
+  "sameAs" (slice site.Params.links.twitter site.Params.links.youtube site.Params.links.luma)
 -}}
 {{- $graph := slice $org -}}
 {{- if .IsHome -}}
@@ -19,6 +19,26 @@
     "url" site.Home.Permalink
     "inLanguage" site.Language.Locale
     "publisher" (dict "@id" (printf "%s#organizacion" site.Home.Permalink))
+  ) -}}
+{{- end -}}
+{{- with and .IsHome site.Params.mastermind -}}
+  {{- $graph = $graph | append (dict
+    "@type" "EventSeries"
+    "name" .name
+    "description" "Presenta tu venture. Recibe feedback real. Avanza cada semana. Conversaciones tácticas para techies y emprendedores con el corazón en la Isla."
+    "url" site.Params.links.luma
+    "inLanguage" site.Language.Locale
+    "eventAttendanceMode" "https://schema.org/OnlineEventAttendanceMode"
+    "location" (dict "@type" "VirtualLocation" "url" site.Params.links.luma)
+    "organizer" (dict "@id" (printf "%s#organizacion" site.Home.Permalink))
+    "eventSchedule" (dict
+      "@type" "Schedule"
+      "byDay" "https://schema.org/Friday"
+      "startTime" "10:00:00"
+      "endTime" "11:00:00"
+      "repeatFrequency" "P1W"
+      "scheduleTimezone" "America/Puerto_Rico"
+    )
   ) -}}
 {{- end -}}
 {{- if eq .Path "/trabajo-remoto" -}}

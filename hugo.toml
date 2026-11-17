@@ -7,13 +7,20 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
 
 [params]
   images = ['images/og.png']
-  description = 'El hogar de los emprendedores independientes en Puerto Rico. Meetups mensuales en Santurce y una comunidad en Slack para quienes trabajan remoto, son freelancers o trabajan solos.'
+  description = 'El hogar de los emprendedores independientes en Puerto Rico. Un Mastermind online cada viernes y una comunidad en Slack para quienes trabajan remoto, son freelancers o trabajan solos.'
   [params.links]
     slack = 'https://communityinviter.com/apps/indiehackerspr/indie-hackers-puerto-rico'
     twitter = 'https://twitter.com/indiehackerspr'
     youtube = 'https://www.youtube.com/channel/UCYqirt7QurXFiXkgMgz6QMA'
-    venue = 'https://piloto151.com/santurce-suites/'
+    luma = 'https://luma.com/indiehackers_pr'
     addPlace = 'https://indiehackerpr.paperform.co'
+  # Weekly online session, published on the Luma calendar.
+  [params.mastermind]
+    name = 'Mastermind: Feedback para nuestros ventures'
+    time = '10:00–11:00 AM'
+    utcHour = 14
+    platform = 'Google Meet'
+    host = 'Emanuel Rolon'
 
 [build]
   [build.buildStats]
@@ -35,8 +42,8 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
 
 [menus]
   [[menus.main]]
-    name = 'Meetups'
-    url = '/#meetups'
+    name = 'Mastermind'
+    url = '/#mastermind'
     weight = 10
   [[menus.main]]
     name = 'Miembros'

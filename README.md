@@ -14,7 +14,8 @@ npm run build   # production build into public/
 
 - **Members:** `data/miembros.yaml` (bio is Markdown) + photo in `assets/images/miembros/`
 - **Remote-work places:** `data/lugares.yaml` + photo in `assets/images/lugares/`
-- **Links** (Slack, X, YouTube, venue, add-a-place form): `[params.links]` in `hugo.toml`
+- **Links** (Slack, Luma, X, YouTube, add-a-place form): `[params.links]` in `hugo.toml`
+- **Weekly Mastermind** (time, platform, host): `[params.mastermind]` in `hugo.toml`
 
 Photos are resized and converted to WebP at build time, so drop in originals.
 

@@ -10,46 +10,75 @@
       <p class="mt-8 max-w-xl text-xl font-medium sm:text-2xl">
         El hogar de los emprendedores independientes boricuas. Somos la comunidad local de
         <a href="https://www.indiehackers.com/" class="underline decoration-2 underline-offset-4 hover:text-flamboyan">Indie Hackers</a>:
-        nos juntamos cada mes en Santurce y hablamos todos los días en Slack.
+        nos reunimos online cada viernes y hablamos todos los días en Slack.
       </p>
       <div class="mt-10 flex flex-wrap gap-4">
         <a href="{{ $links.slack }}" class="btn-solid">Únete a la comunidad en Slack</a>
-        <a href="#meetups" class="btn-outline">Ver los meetups</a>
+        <a href="#mastermind" class="btn-outline">Ver el Mastermind semanal</a>
       </div>
     </div>
   </section>
 
-  {{/* Meetups */}}
-  <section id="meetups" class="scroll-mt-4 bg-mango">
+  {{/* Weekly mastermind */}}
+  {{ with site.Params.mastermind }}
+  <section id="mastermind" class="scroll-mt-4 bg-mango">
     <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[5fr_6fr]">
       <div>
-        <h2 class="display text-4xl sm:text-5xl">Meetups cada mes</h2>
+        <h2 class="display text-4xl sm:text-5xl">Mastermind cada viernes</h2>
         <p class="mt-6 max-w-prose text-lg leading-relaxed">
-          Nos reunimos todos los meses en <a href="{{ $links.venue }}" class="font-semibold underline underline-offset-4 hover:text-flamboyan">Piloto 151, Santurce Suites</a>
-          para discutir ideas de negocio, hacer amigos y compartir pizzas y cervezas.
-          Anunciamos cada evento en X, y las charlas pasadas están en YouTube.
+          Presenta tu venture. Recibe feedback real. Avanza cada semana.
+          Conversaciones tácticas para techies y emprendedores con el corazón en la Isla.
         </p>
+        <dl class="mt-8 grid max-w-md grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-lg">
+          <dt class="font-bold">Cuándo</dt>
+          <dd>Viernes, {{ .time }} (hora de Puerto Rico)</dd>
+          <dt class="font-bold">Dónde</dt>
+          <dd>Online por {{ .platform }}</dd>
+          <dt class="font-bold">Organiza</dt>
+          <dd>{{ .host }}</dd>
+        </dl>
+        <p class="mt-6 font-semibold" data-next-session hidden></p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="{{ $links.twitter }}" class="btn-solid">Ver próximos eventos</a>
+          <a href="{{ $links.luma }}" class="btn-solid">Regístrate en Luma</a>
           <a href="{{ $links.youtube }}" class="btn-outline">Ver charlas anteriores</a>
         </div>
       </div>
-      <div class="grid grid-cols-2 gap-4">
-        {{ range slice
-          (dict "src" "meetups/meetup.jpg" "alt" "Grupo de Indie Hackers Puerto Rico en un meetup en Piloto 151, Santurce")
-          (dict "src" "meetups/cervezas.jpg" "alt" "Miembros de Indie Hackers Puerto Rico compartiendo cervezas después de un meetup")
-        }}
-          {{ $alt := .alt }}
-          {{ with resources.Get (printf "images/%s" .src) }}
-            {{ with .Process "webp" }}
-              <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $alt }}"
-                class="aspect-[3/2] w-full rounded-lg border-4 border-white object-cover even:mt-10" loading="lazy">
+      <figure>
+        <div class="grid grid-cols-2 gap-4">
+          {{ range slice
+            (dict "src" "meetups/meetup.jpg" "alt" "Grupo de Indie Hackers Puerto Rico en un meetup presencial en Piloto 151, Santurce")
+            (dict "src" "meetups/cervezas.jpg" "alt" "Miembros de Indie Hackers Puerto Rico compartiendo cervezas después de un meetup presencial")
+          }}
+            {{ $alt := .alt }}
+            {{ with resources.Get (printf "images/%s" .src) }}
+              {{ with .Process "webp" }}
+                <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $alt }}"
+                  class="aspect-[3/2] w-full rounded-lg border-4 border-white object-cover even:mt-10" loading="lazy">
+              {{ end }}
             {{ end }}
           {{ end }}
-        {{ end }}
-      </div>
+        </div>
+        <figcaption class="mt-4 text-sm font-medium text-navy/70">Así empezamos: meetups presenciales en Piloto 151, Santurce.</figcaption>
+      </figure>
     </div>
   </section>
+
+  <script>
+    // Show the date of the next Friday session in Puerto Rico time (UTC-4, no DST).
+    (() => {
+      const el = document.querySelector("[data-next-session]");
+      const now = new Date();
+      const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), {{ .utcHour }}));
+      const daysAhead = (5 - next.getUTCDay() + 7) % 7;
+      next.setUTCDate(next.getUTCDate() + daysAhead);
+      // Once this week's session has ended, point to next week's.
+      if (now - next > 60 * 60 * 1000) next.setUTCDate(next.getUTCDate() + 7);
+      const fmt = new Intl.DateTimeFormat("es-PR", { weekday: "long", day: "numeric", month: "long", timeZone: "America/Puerto_Rico" });
+      el.textContent = `Próxima sesión: ${fmt.format(next)}`;
+      el.hidden = false;
+    })();
+  </script>
+  {{ end }}
 
   {{/* Slack */}}
   <section class="bg-navy text-white">
